@@ -1,0 +1,35 @@
+---
+- name: 1. install MariaDB server package
+  become: yes
+  yum:
+    name: mariadb-server
+    state: present
+
+- name: 2. start mysql service
+  become: yes
+  service:
+    name: mariadb
+    state: started
+    enabled: true
+
+- name: install python mysql package (required for mysql_db tasks)
+  become: yes
+  yum:
+    name: MySQL-python
+    state: present
+
+- name: 3. create new database
+  become: yes
+  mysql_db:
+    name: zabbix
+    state: present
+    collation: utf8_bin
+
+- name: 4. create database user
+  become: yes
+  mysql_user:
+    name: zabbix
+    password: demo
+    priv: zabbix.*:ALL
+    host: localhost
+    state: present

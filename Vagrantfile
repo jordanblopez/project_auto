@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "node" do |node|
     node.vm.provision "shell", inline: "echo Node, checking in"
     node.vm.box = "bento/centos-7.3"
-    node.vm.network "private_network", ip: "10.10.0.2"
+    node.vm.network "private_network", ip: "192.168.56.31"
   end
 
   #The master machine will have ansible and  be used to configure the other nodes
@@ -18,9 +18,9 @@ Vagrant.configure("2") do |config|
       vb.memory = "1024"
     end
 
-    subconfig.vm.provision "ansible_local" do |ansible|
-      ansible.playbook = "provisioning/playbook.yml"
-    end
+    #subconfig.vm.provision "ansible_local" do |ansible|
+    #  ansible.playbook = "provisioning/playbook.yml"
+    #end
 
   end
 

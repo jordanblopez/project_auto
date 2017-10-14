@@ -1,23 +1,5 @@
 ---
 - hosts: all
-  become: true
-  tasks:
-    - name: Make sure that we can connect to the machine
-      ping:
-    - name: upgrade all packages
-      yum:
-        name: '*'
-        state: latest
-    - name: Install PHP
-      yum:
-        name: php
-        state: present
-        update_cache: yes
-    - name: Install nginx
-      yum:
-        name: httpd
-        state: present
-    - name: Install mariaDB
-      yum:
-        name: mariaDB
-        state: present
+  roles:
+    - apache2
+    - mariadb
