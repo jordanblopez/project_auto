@@ -7,10 +7,9 @@
 - name: 2. install zabbix server
   yum:
     state: present
-    name: {{ item }}
-    with_items:
-    - zabbix-server-mysql
-    - zabbix-web-mysql
+    name:
+      - zabbix-server-mysql
+      - zabbix-web-mysql
 
 - name: 3. copy database dump file
   copy:
