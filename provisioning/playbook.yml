@@ -3,3 +3,4 @@
   roles:
     - apache2
     - mariadb
+    - zabbix
