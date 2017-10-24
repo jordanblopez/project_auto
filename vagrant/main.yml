@@ -18,4 +18,4 @@
     - name: Clone github repo for zabbix deployment
       git:
         repo: 'https://github.com/jordanblopez/project_auto.git'
-        dest: /home/vagrant
+        dest: /home/vagrant/proj

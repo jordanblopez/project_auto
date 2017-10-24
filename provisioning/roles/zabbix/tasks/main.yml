@@ -13,8 +13,10 @@
 
 - name: 3. copy database dump file
   copy:
+    remote_src: yes
     src: /usr/share/doc/zabbix-server-mysql-3.4.3/create.sql.gz
     dest: /tmp
+    mode: 644
 
 - name: 4. import the schema
   mysql_db:
