@@ -7,6 +7,7 @@
 - name: 2. install zabbix server
   yum:
     state: present
+    enabled: true
     name:
       - zabbix-server-mysql
       - zabbix-web-mysql
@@ -18,20 +19,20 @@
     dest: /tmp
     mode: 644
 
-- name: 4. import the schema
-  mysql_db:
-    name: zabbix
-    state: import
-    target: /tmp/create.sql.gz
+#- name: 4. import the schema
+#  mysql_db:
+#    name: zabbix
+#    state: import
+#    target: /tmp/create.sql.gz
 
-- name: 5. edit zabbix.conf
-  copy:
-    src: zabbix_server.conf
-    dest: /etc/zabbix/zabbix_server.conf
+#- name: 5. edit zabbix.conf
+#  copy:
+#    src: zabbix_server.conf
+#    dest: /etc/zabbix/zabbix_server.conf
 
-- name: 6. set php datetime
-  lineinfile:
-    path: /etc/httpd/conf.d/zabbix.conf
-    regexp: '^php_value date'
-    line: 'php_value date.time America/Los_Angeles'
-    state: present
+#- name: 6. set php datetime
+#  lineinfile:
+#    path: /etc/httpd/conf.d/zabbix.conf
+#    regexp: '^php_value date'
+#    line: 'php_value date.time America/Los_Angeles'
+#    state: present
